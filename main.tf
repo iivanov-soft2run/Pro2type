@@ -32,3 +32,9 @@ resource "digitalocean_kubernetes_cluster" "pro2type" {
     node_count = 3
   }
 }
+resource "digitalocean_project_resources" "pro2type" {
+  project = data.digitalocean_project.pro2type.id
+  resources = [
+    digitalocean_kubernetes_cluster.pro2type.urn
+  ]
+}

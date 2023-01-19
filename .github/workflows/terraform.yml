@@ -55,12 +55,7 @@ on:
 permissions:
   contents: read
 
-jobs:
-  test:
-    runs-on: "ubuntu-latest"
-    steps:
-      - run: echo "event name is:" ${{ github.event_name }} 
-      - run: echo "branch is:" ${{ github.ref }} 
+jobs: 
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest

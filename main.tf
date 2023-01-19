@@ -16,7 +16,10 @@ variable "do_token" {}
 provider "digitalocean" {
   token = var.do_token
 }
-#An example resource that does nothing.
+data "digitalocean_project" "pro2type" {
+  name = "pro2type"
+}
+
 resource "digitalocean_kubernetes_cluster" "pro2type" {
   name   = "pro2type"
   region = "fra1"
@@ -28,4 +31,10 @@ resource "digitalocean_kubernetes_cluster" "pro2type" {
     size       = "s-1vcpu-2gb"
     node_count = 3
   }
+}
+resource "digitalocean_project_resources" "pro2type" {
+  project = data.digitalocean_project.pro2type.id
+  resources = [
+    digitalocean_kubernetes_cluster.pro2type.urn
+  ]
 }

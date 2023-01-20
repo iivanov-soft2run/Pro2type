@@ -62,4 +62,5 @@ resource "helm_release" "example" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "redis"
   version    = "17.5.1"
+  namespace  = "test"
 }

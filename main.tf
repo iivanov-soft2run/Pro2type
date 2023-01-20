@@ -26,9 +26,9 @@ provider "digitalocean" {
 provider "helm" {
   kubernetes {
     host                   = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
-    client_certificate     = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_certificate
-    client_key             = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_key
-    cluster_ca_certificate = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].cluster_ca_certificate
+    client_certificate     = base64decode(resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_certificate)
+    client_key             = base64decode(resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_key)
+    cluster_ca_certificate = base64decode(resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].cluster_ca_certificate)
   }
 }
 data "digitalocean_project" "pro2type" {

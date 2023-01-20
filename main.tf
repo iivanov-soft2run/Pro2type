@@ -43,9 +43,9 @@ resource "digitalocean_kubernetes_cluster" "pro2type" {
   node_pool {
     name       = "pro2type-pool-1"
     size       = "s-1vcpu-2gb"
-    auto_sclae= true
-    min_nodes = 3
-    max_nodes = 6
+    auto_sclae = true
+    min_nodes  = 3
+    max_nodes  = 6
     node_count = 3
   }
 }

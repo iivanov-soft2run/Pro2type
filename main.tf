@@ -25,10 +25,10 @@ provider "digitalocean" {
 
 provider "helm" {
   kubernetes {
-    host                   = data.digitalocean_kubernetes_cluster.pro2type.endpoint
-    client_certificate     = data.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_certificate
-    client_key             = data.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_key
-    cluster_ca_certificate = data.digitalocean_kubernetes_cluster.pro2type.kube_config[0].cluster_ca_certificate
+    host                   = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
+    client_certificate     = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_certificate
+    client_key             = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_key
+    cluster_ca_certificate = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].cluster_ca_certificate
   }
 }
 data "digitalocean_project" "pro2type" {

@@ -59,9 +59,10 @@ resource "digitalocean_project_resources" "pro2type" {
 }
 
 resource "helm_release" "example" {
-  name       = "my-redis-release"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "redis"
-  version    = "17.5.1"
-  namespace  = "test"
+  name             = "my-redis-release"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "redis"
+  version          = "17.5.1"
+  namespace        = "test"
+  create_namespace = true
 }

@@ -15,11 +15,11 @@ resource "kubernetes_manifest" "do-provider" {
 resource "kubernetes_manifest" "do-provider-secret" {
   manifest = {
     apiVersion = "v1"
-    kind = "Secret"
+    kind       = "Secret"
   }
   metadata = {
     namespace = "crossplane"
-    name = "provider-do-secret"
+    name      = "provider-do-secret"
   }
   type = "Opaque"
   data = {
@@ -29,19 +29,19 @@ resource "kubernetes_manifest" "do-provider-secret" {
 resource "kubernetes_manifest" "do-provider-config" {
   manifest = {
     apiVersion = "do.crossplane.io/v1alpha1"
-    kind= "ProviderConfig"
+    kind       = "ProviderConfig"
   }
   metadata = {
     name = "do-provider-config"
   }
   spec = {
-   credentials = {
-    source = "Secret"
-    secretRef = {
-      namespace = "crossplane"
-      name=  "provider-do-secret"
-      key= "token"
-   }
-   }
+    credentials = {
+      source = "Secret"
+      secretRef = {
+        namespace = "crossplane"
+        name      = "provider-do-secret"
+        key       = "token"
+      }
+    }
   }
 }

@@ -32,13 +32,13 @@ provider "digitalocean" {
 # Helm with Digital Ocean Cluster Credentials
 provider "helm" {
   kubernetes {
-    host                   = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
-    token                  = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].token
+    host  = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
+    token = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].token
   }
 }
 
 # Kubernetes with Digital Ocean Cluster Credentials
 provider "kubernetes" {
-  host                   = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
-  token                  = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].token
+  host  = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
+  token = resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].token
 }

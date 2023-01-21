@@ -5,8 +5,8 @@ data "digitalocean_project" "pro2type" {
 }
 
 resource "digitalocean_kubernetes_cluster" "pro2type" {
-  name   = "pro2type"
-  region = "fra1"
+  name    = "pro2type"
+  region  = "fra1"
   version = "1.25.4-do.0"
   node_pool {
     name       = "pro2type-pool-1"

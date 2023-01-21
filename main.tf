@@ -58,11 +58,11 @@ resource "digitalocean_project_resources" "pro2type" {
   ]
 }
 
-resource "helm_release" "example" {
-  name             = "my-redis-release"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "redis"
-  version          = "17.5.1"
-  namespace        = "test"
+resource "helm_release" "crossplane" {
+  name             = "crossplane"
+  repository       = "https://charts.crossplane.io/stable"
+  chart            = "crossplane-stable/crossplane"
+  version          = "1.10.2"
+  namespace        = "crossplane"
   create_namespace = true
 }

@@ -7,8 +7,8 @@ on:
         description: 'Resource type to create'
         required: true
         options:
-        - database
-        - droplet
+        - 'database'
+        - 'droplet'
       resource_name:
         description: 'Resource name to create'
         required: true

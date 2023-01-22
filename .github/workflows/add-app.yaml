@@ -14,12 +14,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Test
-      run: ls
     - name: CopyTemplate
       run: cp templates/app-template.yaml pro2type-apps/${{github.event.inputs.app_name}}.yaml
     - name: FillTemplate
-      run: sed -i 's/{{app_name}}/${{github.event.inputs.app_name}}/g' pro2type-apps/${{github.event.inputs.app_name}}
+      run: sed -i 's/{{app_name}}/${{github.event.inputs.app_name}}/g' pro2type-apps/${{github.event.inputs.app_name}}.yaml
     - name: CreateAppFolder
       run: mkdir pro2types/${{github.event.inputs.app_name}}
     - name: GitPush

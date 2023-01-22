@@ -6,6 +6,7 @@ on:
       resource_type:
         description: 'Resource type to create'
         required: true
+        type: choice
         options:
         - 'database'
         - 'droplet'

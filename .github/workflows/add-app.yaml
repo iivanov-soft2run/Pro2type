@@ -20,7 +20,5 @@ jobs:
       run: sed -i 's/{{app_name}}/${{github.event.inputs.app_name}}/g' pro2type-apps/${{github.event.inputs.app_name}}.yaml
     - name: CreateAppFolder
       run: mkdir pro2types/${{github.event.inputs.app_name}} && touch pro2types/${{github.event.inputs.app_name}}/.gitkeep
-    - name: AddAppOption
-      run: sed -i "[[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]]options:/a[[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]][[:space:]]-[[:space:]]'${{github.event.inputs.app_name}}'" .github/workflows/add-resource.yaml
     - name: GitPush
       uses: stefanzweifel/git-auto-commit-action@v4

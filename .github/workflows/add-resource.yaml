@@ -16,8 +16,6 @@ on:
       app_name:
         description: 'Which app is the resource part of?'
         required: true
-        type: choice
-        options:
         
 jobs:
   add-app:

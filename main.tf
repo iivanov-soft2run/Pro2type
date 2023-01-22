@@ -15,9 +15,9 @@ terraform {
       source  = "hashicorp/helm"
       version = "2.8.0"
     }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "2.16.1"
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "1.14.0"
     }
   }
 }
@@ -41,7 +41,7 @@ provider "helm" {
 }
 
 # Kubernetes with Digital Ocean Cluster Credentials
-provider "kubernetes" {
+provider "kubectl" {
   host                   = resource.digitalocean_kubernetes_cluster.pro2type.endpoint
   client_certificate     = base64decode(resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_certificate)
   client_key             = base64decode(resource.digitalocean_kubernetes_cluster.pro2type.kube_config[0].client_key)

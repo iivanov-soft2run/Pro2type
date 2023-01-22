@@ -1,0 +1,32 @@
+name: 'Add App'
+
+on:
+  workflow_dispatch:
+    inputs:
+      resource_type:
+        description: 'Resource type to create'
+        required: true
+      resource_name:
+        description: 'Resource name to create'
+        required: true
+      app_name:
+        description: 'Which app is the resource part of?'
+        required: true
+        
+jobs:
+  add-app:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: CopyDropletTemplate
+      if: github.event.inputs.resource_type == 'droplet'
+      run: cp templates/do-droplet-template.yaml pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
+    - name: CopyDatabaseTemplate
+      if: github.event.inputs.resource_type == 'database'
+      run: cp templates/do-database-template.yaml pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
+    - name: FillTemplate
+      run: sed -i 's/{{droplet_name}}/${{github.event.inputs.resource_name}}/g' pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
+    - name: GitPush
+      uses: stefanzweifel/git-auto-commit-action@v4

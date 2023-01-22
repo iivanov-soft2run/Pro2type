@@ -18,9 +18,10 @@ By default only the Digital Ocean Crossplane provider is added.
 
 # Applications:
 For each application we will be developing a new ArgoCD application will be created through the dispatcher
-Start the add-app workflow in Github Actions and provide the name for the application
+Start the Add App workflow in Github Actions and provide the name for the application
 
 # Resources:
+Start the Add ApResource workflow in Github Actions and provide the name, type and application for the resource
 
 # Inspiration
 https://open.spotify.com/episode/50o2lnecNF9mJ4Xy4pgPj8

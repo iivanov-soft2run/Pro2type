@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{app_name}}
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/iivanov-soft2run/Pro2type.git
+    targetRevision: HEAD
+    path: pro2types/{{app_name}}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{app_name}}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

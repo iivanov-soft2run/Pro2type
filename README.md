@@ -7,6 +7,7 @@ Digital Ocean account
 Terraform Cloud account
 Digital Ocean access token set to DO_API_TOKEN repository secret
 Terraform Cloud access token set to TF_API_TOKEN repository secret
+Set workflow permissions to read/write for your repository
 
 # Installation:
 To install from github you can go to action and manually start the Install workflow

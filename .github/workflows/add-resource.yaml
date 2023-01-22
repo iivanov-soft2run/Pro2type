@@ -31,6 +31,6 @@ jobs:
       if: github.event.inputs.resource_type == 'database'
       run: cp templates/do-database-template.yaml pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
     - name: FillTemplate
-      run: sed -i 's/{{droplet_name}}/${{github.event.inputs.resource_name}}/g' pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
+      run: sed -i 's/{{resource_name}}/${{github.event.inputs.resource_name}}/g' pro2types/${{github.event.inputs.app_name}}/${{github.event.inputs.resource_name}}.yaml
     - name: GitPush
       uses: stefanzweifel/git-auto-commit-action@v4

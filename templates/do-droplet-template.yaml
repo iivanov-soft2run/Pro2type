@@ -1,9 +1,9 @@
 apiVersion: compute.do.crossplane.io/v1alpha1
 kind: Droplet
 metadata:
-  name: {{droplet_name}}
+  name: {{resource_name}}
   annotations:
-    crossplane.io/external-name: {{droplet_name}}
+    crossplane.io/external-name: {{resource_name}}
 spec:
   forProvider:
     region: fra1

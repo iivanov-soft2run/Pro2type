@@ -1,7 +1,7 @@
 apiVersion: database.do.crossplane.io/v1alpha1
 kind: DODatabaseCluster
 metadata:
-  name: {{db_cluster_name}}
+  name: {{resource_name}}
 spec:
   forProvider:
     engine: pg

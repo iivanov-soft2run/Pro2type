@@ -26,6 +26,10 @@ terraform {
 variable "do_token" {
   sensitive = true
 }
+# Git Hub
+variable "gh_token" {
+  sensitive = true
+}
 
 provider "digitalocean" {
   token = var.do_token

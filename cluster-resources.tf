@@ -8,7 +8,7 @@ resource "helm_release" "crossplane" {
 }
 
 data "kubectl_file_documents" "argocd" {
-    content = file("./argocd/argocd.yaml")
+  content = file("./argocd/argocd.yaml")
 }
 
 resource "kubectl_manifest" "argocd-namespace" {
@@ -21,10 +21,10 @@ metadata:
 }
 
 resource "kubectl_manifest" "argocd" {
-    depends_on = [
-      kubectl_manifest.argocd-namespace,
-    ]
-    count     = length(data.kubectl_file_documents.argocd.documents)
-    yaml_body = element(data.kubectl_file_documents.argocd.documents, count.index)
-    override_namespace = "argocd"
+  depends_on = [
+    kubectl_manifest.argocd-namespace,
+  ]
+  count              = length(data.kubectl_file_documents.argocd.documents)
+  yaml_body          = element(data.kubectl_file_documents.argocd.documents, count.index)
+  override_namespace = "argocd"
 }

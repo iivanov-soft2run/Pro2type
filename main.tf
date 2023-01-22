@@ -24,7 +24,7 @@ terraform {
 
 # Digital Ocean
 variable "do_token" {
-    sensitive = true
+  sensitive = true
 }
 
 provider "digitalocean" {

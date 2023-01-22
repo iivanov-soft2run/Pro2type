@@ -3,7 +3,7 @@ kind: Droplet
 metadata:
   name: {{droplet_name}}
   annotations:
-    crossplane.io/external-name: crossplane-droplet
+    crossplane.io/external-name: {{droplet_name}}
 spec:
   forProvider:
     region: fra1

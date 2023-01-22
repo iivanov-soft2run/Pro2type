@@ -23,7 +23,9 @@ terraform {
 }
 
 # Digital Ocean
-variable "do_token" {}
+variable "do_token" {
+    sensitive = true
+}
 
 provider "digitalocean" {
   token = var.do_token

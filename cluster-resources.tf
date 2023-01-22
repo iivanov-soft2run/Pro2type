@@ -11,6 +11,10 @@ data "kubectl_file_documents" "argocd" {
   content = file("./argocd/argocd.yaml")
 }
 
+data "kubectl_file_documents" "app-dispatcher" {
+  content = file("./argocd/app-dispatcher.yaml")
+}
+
 resource "kubectl_manifest" "argocd-namespace" {
   yaml_body = <<YAML
 apiVersion: v1
@@ -26,5 +30,14 @@ resource "kubectl_manifest" "argocd" {
   ]
   count              = length(data.kubectl_file_documents.argocd.documents)
   yaml_body          = element(data.kubectl_file_documents.argocd.documents, count.index)
+  override_namespace = "argocd"
+}
+
+resource "kubectl_manifest" "app-dispatcher" {
+  depends_on = [
+    kubectl_manifest.argocd,
+  ]
+  count              = length(data.kubectl_file_documents.app-dispatcher.documents)
+  yaml_body          = element(data.kubectl_file_documents.app-dispatcher.documents, count.index)
   override_namespace = "argocd"
 }

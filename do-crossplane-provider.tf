@@ -15,7 +15,7 @@ resource "kubectl_manifest" "do-provider-secret" {
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: crossplane-system
+  namespace: crossplane
   name: provider-do-secret
 type: Opaque
 data:
@@ -32,7 +32,7 @@ spec:
   credentials:
     source: Secret
     secretRef:
-      namespace: crossplane-system
+      namespace: crossplane
       name: provider-do-secret
       key: token
 YAML
